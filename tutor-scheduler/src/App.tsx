@@ -4,8 +4,8 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import DatePicker from "./components/datepicker";
-import Toggle from "./components/toggle";
+import DateTimePicker from "./components/datepicker";
+
 import Grid from "@mui/material/Grid";
 
 const addAppointment = () => {
@@ -21,7 +21,7 @@ function App() {
     <Grid container spacing={5} padding={5}>
       <Grid item xs={3}>
         <div style={{ background: "white", marginLeft: "1.25em" }}>
-          <DatePicker />
+          <DateTimePicker />
         </div>
       </Grid>
       <Grid item xs={4}>
@@ -39,7 +39,9 @@ function App() {
       </Grid>
       <Grid item xs={12}>
         <Stack sx={{ width: "100%" }} spacing={2}>
-          <Alert severity="error">Sorry error appointment n ot added</Alert>
+          <Alert severity="error">
+            Error! sorry appointment time not available
+          </Alert>
           <Alert severity="success">
             Success appointment added — check it out!
           </Alert>
