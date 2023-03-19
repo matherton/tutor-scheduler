@@ -4,24 +4,48 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+import DatePicker from "./components/datepicker";
+import Toggle from "./components/toggle";
+import Grid from "@mui/material/Grid";
+
+const addAppointment = () => {
+  console.log("added");
+};
+
+const deleteAppointment = () => {
+  console.log("deleted");
+};
+
 function App() {
   return (
-    <div>
-      <Stack sx={{ width: "100%" }} spacing={2}>
-        <Alert severity="error">This is an error alert — check it out!</Alert>
-        <Alert severity="success">
-          This is a success alert — check it out!
-        </Alert>
-      </Stack>
-      <Stack mt={2} sx={{ width: "100%" }} direction="row" spacing={1}>
-        <Button variant="contained">
-          <AddIcon /> Add Button
-        </Button>
-        <Button color="error" variant="outlined">
-          <DeleteIcon /> Delete Button
-        </Button>
-      </Stack>
-    </div>
+    <Grid container spacing={5} padding={5}>
+      <Grid item xs={3}>
+        <div style={{ background: "white", marginLeft: "1.25em" }}>
+          <DatePicker />
+        </div>
+      </Grid>
+      <Grid item xs={4}>
+        {/* <Toggle /> */}
+      </Grid>
+      <Grid item xs={5}>
+        <Stack mt={2} sx={{ width: "100%" }} direction="row" spacing={1}>
+          <Button variant="contained" onClick={addAppointment}>
+            <AddIcon /> Add Appointment
+          </Button>
+          <Button color="error" variant="contained" onClick={deleteAppointment}>
+            <DeleteIcon /> Delete Appointment
+          </Button>
+        </Stack>
+      </Grid>
+      <Grid item xs={12}>
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">Sorry error appointment n ot added</Alert>
+          <Alert severity="success">
+            Success appointment added — check it out!
+          </Alert>
+        </Stack>
+      </Grid>
+    </Grid>
   );
 }
 
