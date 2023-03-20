@@ -19,7 +19,9 @@ function App() {
 
   const addAppointment = () => {
     if (value === null) {
-      window.alert("Error: no appointment time selected");
+      window.alert(
+        "Error: Please select an appointment time and date with Dr John Lecturer using the Date Picker!"
+      );
       return;
     }
     setDisplaySucess(true);
