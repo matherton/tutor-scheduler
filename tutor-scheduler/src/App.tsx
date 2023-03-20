@@ -18,6 +18,10 @@ function App() {
   const [value, setValue] = useState<Dayjs | null>(tomorrow);
 
   const addAppointment = () => {
+    if (value === null) {
+      window.alert("Error: no appointment time selected");
+      return;
+    }
     setDisplaySucess(true);
     setError(false);
   };
@@ -25,9 +29,12 @@ function App() {
   const deleteAppointment = () => {
     setError(!error);
     setDisplaySucess(false);
+    setTimeout(() => {
+      setValue(tomorrow);
+    }, 10000);
   };
 
-  const submittedApp = value;
+  const submittedApp = value?.format("MMM, ddd D h:mm A");
 
   return (
     <Grid container spacing={5} padding={5}>
