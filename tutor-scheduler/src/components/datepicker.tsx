@@ -12,9 +12,7 @@ export default function DateTimeCalendar() {
         defaultValue={tomorrow}
         minDate={tomorrow}
         value={value}
-        onChange={(newValue) => {
-          console.log("Appointment Booked for ", newValue?.toDate());
-        }}
+        onChange={(newValue) => setValue(newValue)}
       />
     </LocalizationProvider>
   );

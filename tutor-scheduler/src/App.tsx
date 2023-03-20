@@ -11,8 +11,6 @@ import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 
-//import DateTimePicker from "./components/datepicker";
-
 function App() {
   const tomorrow = dayjs().add(1, "day");
   const [displaySucess, setDisplaySucess] = useState(false);
@@ -22,7 +20,6 @@ function App() {
   const addAppointment = () => {
     setDisplaySucess(true);
     setError(false);
-    console.log("addAppointment: ", displaySucess);
   };
 
   const deleteAppointment = () => {
@@ -35,7 +32,6 @@ function App() {
   return (
     <Grid container spacing={5} padding={5}>
       <Grid item xs={4}>
-        {/* <DateTimePicker /> */}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             className="pickerStlye"
@@ -43,18 +39,14 @@ function App() {
             minDate={tomorrow}
             value={value}
             onChange={(newValue) => {
-              console.table(`Appointment selected for ${newValue}`);
               setValue(newValue);
               setError(false);
-              setTimeout(() => {
-                window.alert(`Appointment selected for ${newValue}`);
-              });
             }}
           />
         </LocalizationProvider>
       </Grid>
-      <Grid item xs={3}></Grid>
-      <Grid item xs={5}>
+
+      <Grid item xs={8}>
         <Stack mt={2} sx={{ width: "100%" }} direction="row" spacing={1}>
           <Button variant="contained" onClick={addAppointment}>
             <AddIcon /> Book Appointment
@@ -71,20 +63,13 @@ function App() {
               {`Success appointment submitted ${submittedApp}.`}
             </Alert>
           ) : (
-            <>
-              <Alert severity="info">
-                Please select a date and then time you wish to book an
-                appointment with Dr John Lecturer from the date picker above.
-              </Alert>
-              <Alert severity="info">
-                {" "}
-                Once you have the correct time and date displaying in the window
-                alert select the book appointment button
-              </Alert>
-            </>
+            <Alert severity="info">
+              Please select a date and then time you wish to book an appointment
+              with Dr John Lecturer from the date picker above.
+            </Alert>
           )}
           {error ? (
-            <Alert severity="error">Selected appointment canceled!</Alert>
+            <Alert severity="error">{`${submittedApp} appointment canceled!`}</Alert>
           ) : (
             ""
           )}
