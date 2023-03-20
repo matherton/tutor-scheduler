@@ -1,9 +1,13 @@
+import { IconButton } from "@mui/material/";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@mui/material/Grid";
+import AlertDialog from "./components/alertDialog";
+import Toggle from "./components/toggle";
 import "./App.css";
 
 import { useState } from "react";
@@ -15,6 +19,7 @@ function App() {
   const tomorrow = dayjs().add(1, "day");
   const [displaySucess, setDisplaySucess] = useState(false);
   const [error, setError] = useState(false);
+  const [open, setOpen] = useState(true);
   const [value, setValue] = useState<Dayjs | null>(tomorrow);
 
   const addAppointment = () => {
@@ -78,10 +83,28 @@ function App() {
             </Alert>
           )}
           {error ? (
-            <Alert severity="error">{`${submittedApp} appointment canceled!`}</Alert>
+            <Alert
+              severity="error"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            >
+              {`${submittedApp} appointment canceled!`}
+            </Alert>
           ) : (
             ""
           )}
+          <AlertDialog />
+          <Toggle />
         </Stack>
       </Grid>
     </Grid>
