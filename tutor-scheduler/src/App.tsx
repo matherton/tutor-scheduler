@@ -31,9 +31,9 @@ function App() {
   const deleteAppointment = () => {
     setError(!error);
     setDisplaySucess(false);
-    setTimeout(() => {
+    /* setTimeout(() => {
       setValue(tomorrow);
-    }, 10000);
+    }, 10000); */
   };
 
   const submittedApp = value?.format("MMM, ddd D h:mm A");

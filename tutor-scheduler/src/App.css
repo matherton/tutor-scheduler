@@ -1,3 +1,4 @@
 .pickerStlye .MuiOutlinedInput-root {
   background: white;
+  min-width: 245px;
 }
